@@ -5,7 +5,6 @@ import Container from "../Container/Container";
 
 const Layout = () => {
     return (
-        <>
             <Suspense fallback={"...load"}>
                 <header>
                 <Container>
@@ -16,7 +15,6 @@ const Layout = () => {
                     <Outlet />
                 </main>
             </Suspense>
-        </>
     );
 };
 
