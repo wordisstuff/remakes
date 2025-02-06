@@ -1,4 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
+import { getAllSongs } from "./operation";
 const INIT_STATE = {
     songs:null,
     loading:false,
@@ -13,15 +14,15 @@ reducers:{
 },
 extraReducers: builder => {
 builder
-.addCase(getSongs.pending,(state) => {
+.addCase(getAllSongs.pending,(state) => {
     state.loading = true,
     state.error = null
 })
-.addCase(getSongs.fulfield,(state,action) => {
+.addCase(getAllSongs.fulfilled,(state,action) => {
     state.loading = false
     state.songs = action.payload
 })
-.addCase(getSongs.reject,(state) => {
+.addCase(getAllSongs.rejected,(state) => {
     state.loading = false,
     state.error = action.payload
 })
