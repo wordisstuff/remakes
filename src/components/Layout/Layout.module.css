@@ -1,0 +1,8 @@
+.container {
+    padding-top: 6px;
+    padding-bottom: 6px;
+
+}
+.containerOutlet{
+    display: flex;justify-content: center;
+}
