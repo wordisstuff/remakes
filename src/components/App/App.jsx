@@ -6,6 +6,7 @@ import SigninForm from '../SigninForm/SigninForm';
 import Aos from 'aos';
 import 'aos/dist/aos.css';
 import { useEffect } from 'react';
+import RestrictedRoute from '../Routes/RestrictedRoute';
 function App() {
     useEffect(() => {
         Aos.init();
@@ -15,7 +16,24 @@ function App() {
             <Routes>
                 <Route path="/" element={<Layout />}>
                     <Route index element={<Home />} />
-                    <Route path="/signin" element={<SigninForm />} />
+                    <Route
+                        path="/signin"
+                        element={
+                            <RestrictedRoute
+                                redirectTo="/"
+                                element={<SigninForm />}
+                            />
+                        }
+                    />
+                    <Route
+                        path="/signup"
+                        element={
+                            <RestrictedRoute
+                                redirectTo="/"
+                                element={<SigninForm />}
+                            />
+                        }
+                    />
                     <Route path="/cart" element={<Cart />} />
                 </Route>
             </Routes>

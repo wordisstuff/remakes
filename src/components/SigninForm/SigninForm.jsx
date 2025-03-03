@@ -1,14 +1,19 @@
 import { useEffect, useId, useState } from 'react';
 import UsersWrap from '../UsersWrap/UsersWrap';
 import CSS from './SigninForm.module.css';
-import { NavLink } from 'react-router-dom';
+import { NavLink, useNavigate } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { icons } from '../../icons/index';
 import useCustomForm from '../../Hooks/useCustomForm';
 import { formValuesSignIn, signInSchema } from './Shema';
 import toast from 'react-hot-toast';
+import { useDispatch } from 'react-redux';
+import { login } from '../../redux/auth/operation';
 
 const SigninForm = () => {
+    const dispatch = useDispatch();
+    const navigate = useNavigate();
+
     console.log('SigninForm');
     const { t } = useTranslation();
     const [openPassword, setOpenPassword] = useState(false);
@@ -28,13 +33,13 @@ const SigninForm = () => {
     const onSubmit = async data => {
         try {
             console.log(data);
-            // await dispatch(logIn(data)).unwrap();
+            await dispatch(login(data)).unwrap();
             reset();
 
             // const today = new Date().toISOString().split('T')[0];
             // dispatch(setDate(today));
 
-            // navigate('/calendar');
+            navigate('/');
         } catch (error) {
             console.error(error);
         }
