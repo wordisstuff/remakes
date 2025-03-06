@@ -44,3 +44,21 @@ export const login = createAsyncThunk(
         }
     },
 );
+
+export const currentUser = createAsyncThunk(
+    'auth/curent',
+    async (_, { rejectWithValue, getState }) => {
+        try {
+            const { auth } = getState();
+            const token = auth.token;
+            if (!token) {
+                return rejectWithValue(null);
+            }
+            setAuthHeader(token);
+            const { data } = await songApi.get('/auth/current');
+            return data;
+        } catch {
+            return rejectWithValue(null);
+        }
+    },
+);

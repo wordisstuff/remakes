@@ -1,6 +1,6 @@
 import { useEffect, useId, useState } from 'react';
 import UsersWrap from '../UsersWrap/UsersWrap';
-import CSS from './SigninForm.module.css';
+import CSS from './SignForm.module.css';
 import { NavLink, useNavigate } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { icons } from '../../icons/index';
@@ -10,7 +10,7 @@ import toast from 'react-hot-toast';
 import { useDispatch } from 'react-redux';
 import { login } from '../../redux/auth/operation';
 
-const SigninForm = () => {
+const SignForm = () => {
     const dispatch = useDispatch();
     const navigate = useNavigate();
 
@@ -174,4 +174,4 @@ const SigninForm = () => {
     );
 };
 
-export default SigninForm;
+export default SignForm;

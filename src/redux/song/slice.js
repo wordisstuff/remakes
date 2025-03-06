@@ -17,7 +17,7 @@ const songSlice = createSlice({
             })
             .addCase(getAllSongs.fulfilled, (state, action) => {
                 state.loading = false;
-                state.songs = action.payload;
+                state.songs = action.payload.data;
             })
             .addCase(getAllSongs.rejected, (state, action) => {
                 (state.loading = false), (state.error = action.payload);

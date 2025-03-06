@@ -2,11 +2,12 @@ import { Route, Routes } from 'react-router-dom';
 import Layout from '../Layout/Layout';
 import Cart from '../Cart/Cart';
 import Home from '../Home/Home';
-import SigninForm from '../SigninForm/SigninForm';
+import SigninForm from '../SignForm/SignForm';
 import Aos from 'aos';
 import 'aos/dist/aos.css';
 import { useEffect } from 'react';
 import RestrictedRoute from '../Routes/RestrictedRoute';
+import AuthPage from '../../pages/AuthPage';
 function App() {
     useEffect(() => {
         Aos.init();
@@ -21,7 +22,7 @@ function App() {
                         element={
                             <RestrictedRoute
                                 redirectTo="/"
-                                element={<SigninForm />}
+                                element={<AuthPage />}
                             />
                         }
                     />

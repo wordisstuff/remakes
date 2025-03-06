@@ -5,7 +5,7 @@ export const getAllSongs = createAsyncThunk(
     'song/getAllSongs',
     async (_, { rejectWithValue }) => {
         try {
-            const { data } = await songApi.get();
+            const { data } = await songApi.get('/songs');
             console.log(data);
             return data;
         } catch (err) {

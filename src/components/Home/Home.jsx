@@ -16,10 +16,10 @@ const Home = () => {
     return (
         <Container>
             <ul className={CSS.homebox}>
-                {songs &&
-                    songs.map(({ id, name, avatar }) => {
+                {songs !== null &&
+                    songs.map(({ _id, name, avatar }) => {
                         return (
-                            <li key={id}>
+                            <li key={_id}>
                                 <div
                                     className={CSS.home}
                                     onClick={() => console.log('123')}

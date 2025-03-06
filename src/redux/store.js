@@ -12,6 +12,7 @@ import {
     REGISTER,
 } from 'redux-persist';
 import { authReducer } from './auth/slice';
+import { globalReducer } from './global/slice';
 
 const authPersistConfig = {
     key: 'auth',
@@ -25,6 +26,7 @@ export const store = configureStore({
     reducer: {
         auth: persistedAuth,
         song: songReducer,
+        global: globalReducer,
     },
     middleware: getDefaultMiddleware =>
         getDefaultMiddleware({

@@ -8,13 +8,16 @@ import { persistor, store } from './redux/store.js';
 import './i18n/config.js';
 import 'modern-normalize';
 import { PersistGate } from 'redux-persist/integration/react';
+import { HelmetProvider } from 'react-helmet-async';
 
 createRoot(document.getElementById('root')).render(
     <StrictMode>
         <Provider store={store}>
             <PersistGate persistor={persistor} loading={null}>
                 <BrowserRouter>
-                    <App />
+                    <HelmetProvider>
+                        <App />
+                    </HelmetProvider>
                 </BrowserRouter>
             </PersistGate>
         </Provider>

@@ -1,6 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { login, registerUser } from './operation';
-import { logOutUser } from '../auth/operation';
+import { currentUser, login, registerUser } from './operation.js';
+import { logOutUser } from '../auth/operation.js';
 
 export const INIT_STATE = {
     user: {
@@ -39,6 +39,17 @@ export const authSlice = createSlice({
             })
             .addCase(logOutUser.fulfilled, () => {
                 return INIT_STATE;
+            })
+            .addCase(currentUser.pending, state => {
+                state.isRefreshing = true;
+            })
+            .addCase(currentUser.fulfilled, (state, action) => {
+                state.isLoggedIn = true;
+                state.user = action.payload.user;
+                state.isRefreshing = false;
+            })
+            .addCase(currentUser.rejected, state => {
+                state.isRefreshing = false;
             });
     },
 });
