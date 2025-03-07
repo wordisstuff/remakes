@@ -16,7 +16,7 @@ function App() {
     return (
         <div
             style={{
-                backgroundImage: "url('../../public/bg.webp')",
+                backgroundImage: "url('/bg.webp')",
                 backgroundSize: 'cover',
                 backgroundPosition: 'center',
                 width: '100vw',
