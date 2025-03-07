@@ -1,36 +1,11 @@
 import Container from '../Container/Container';
-import { useDispatch, useSelector } from 'react-redux';
-import { selectSongs } from '../../redux/song/selectors.js';
-import { useEffect } from 'react';
-import { getAllSongs } from '../../redux/song/operation.js';
+import List from '../List/List';
 import CSS from './Home.module.css';
 
 const Home = () => {
-    const songs = useSelector(selectSongs);
-    const dispatch = useDispatch();
-
-    useEffect(() => {
-        dispatch(getAllSongs());
-    }, [dispatch]);
-    console.log(songs);
     return (
-        <Container>
-            <ul className={CSS.homebox}>
-                {songs !== null &&
-                    songs.map(({ _id, name, avatar }) => {
-                        return (
-                            <li key={_id}>
-                                <div
-                                    className={CSS.home}
-                                    onClick={() => console.log('123')}
-                                >
-                                    <p>{name}</p>
-                                    <img src={avatar} alt="Avatar" />
-                                </div>
-                            </li>
-                        );
-                    })}
-            </ul>
+        <Container className={CSS.container}>
+            <List />
         </Container>
     );
 };

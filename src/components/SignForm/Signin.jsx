@@ -1,16 +1,16 @@
 import { useEffect, useId, useState } from 'react';
 import UsersWrap from '../UsersWrap/UsersWrap';
-import CSS from './SignForm.module.css';
+import CSS from './Sign.module.css';
 import { NavLink, useNavigate } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { icons } from '../../icons/index';
 import useCustomForm from '../../Hooks/useCustomForm';
-import { formValuesSignIn, signInSchema } from './Shema';
+import { formValuesSignin, signinSchema } from './Shema';
 import toast from 'react-hot-toast';
 import { useDispatch } from 'react-redux';
 import { login } from '../../redux/auth/operation';
 
-const SignForm = () => {
+const Signin = () => {
     const dispatch = useDispatch();
     const navigate = useNavigate();
 
@@ -26,7 +26,7 @@ const SignForm = () => {
         handleSubmit,
         formState: { errors, isDirty, isValid },
         reset,
-    } = useCustomForm(formValuesSignIn, signInSchema);
+    } = useCustomForm(formValuesSignin, signinSchema);
 
     const togglePasswordVisibility = () => setOpenPassword(prev => !prev);
 
@@ -174,4 +174,4 @@ const SignForm = () => {
     );
 };
 
-export default SignForm;
+export default Signin;

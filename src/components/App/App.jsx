@@ -2,18 +2,27 @@ import { Route, Routes } from 'react-router-dom';
 import Layout from '../Layout/Layout';
 import Cart from '../Cart/Cart';
 import Home from '../Home/Home';
-import SigninForm from '../SignForm/SignForm';
 import Aos from 'aos';
 import 'aos/dist/aos.css';
 import { useEffect } from 'react';
 import RestrictedRoute from '../Routes/RestrictedRoute';
 import AuthPage from '../../pages/AuthPage';
+import Signin from '../SignForm/Signin';
+import Signup from '../SignForm/Signup';
 function App() {
     useEffect(() => {
         Aos.init();
     }, []);
     return (
-        <>
+        <div
+            style={{
+                backgroundImage: "url('../../public/bg.webp')",
+                backgroundSize: 'cover',
+                backgroundPosition: 'center',
+                width: '100vw',
+                height: '100vh',
+            }}
+        >
             <Routes>
                 <Route path="/" element={<Layout />}>
                     <Route index element={<Home />} />
@@ -22,7 +31,11 @@ function App() {
                         element={
                             <RestrictedRoute
                                 redirectTo="/"
-                                element={<AuthPage />}
+                                element={
+                                    <AuthPage>
+                                        <Signin />
+                                    </AuthPage>
+                                }
                             />
                         }
                     />
@@ -31,14 +44,18 @@ function App() {
                         element={
                             <RestrictedRoute
                                 redirectTo="/"
-                                element={<SigninForm />}
+                                element={
+                                    <AuthPage title={true}>
+                                        <Signup />
+                                    </AuthPage>
+                                }
                             />
                         }
                     />
                     <Route path="/cart" element={<Cart />} />
                 </Route>
             </Routes>
-        </>
+        </div>
     );
 }
 

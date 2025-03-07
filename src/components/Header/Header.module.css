@@ -12,7 +12,9 @@
     align-items: center;
     /* margin: 0 auto; */
     padding: 8px ;
-    background-color: peachpuff;
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+    background:linear-gradient(to top left ,#b6c9c8,#5f7776);
 }
 
 .logo{

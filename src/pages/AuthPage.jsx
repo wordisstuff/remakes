@@ -1,14 +1,13 @@
 import { t } from 'i18next';
 import { Helmet } from 'react-helmet-async';
-import SignForm from '../components/SignForm/SignForm';
 
-const AuthPage = () => {
+const AuthPage = ({ children, title }) => {
     return (
         <>
             <Helmet>
-                <title>{t('page.signIn')}</title>
+                <title>{title ? t('page.signUp') : t('page.signIn')}</title>
             </Helmet>
-            <SignForm />
+            {children}
         </>
     );
 };
