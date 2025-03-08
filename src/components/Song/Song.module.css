@@ -1,0 +1,35 @@
+.section {
+    width: 100%;
+}
+
+.homebox {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 16px;
+    border-radius: 20px;
+
+}
+.ava{
+    cursor: pointer;
+    background-color: var(--light-blue);
+    height: 200px;
+    border-radius: 7px;
+}
+.home {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 222px;
+    height: 60px;
+    cursor: pointer;
+    border-radius: 7px;
+    background-color: #f8e3ade1;
+    margin-top: 2px;
+}
+
+.home:hover {
+    background-color: #e4e4e4;
+}

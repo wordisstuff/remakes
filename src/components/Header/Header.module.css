@@ -14,6 +14,8 @@
     padding: 8px ;
     border-top-left-radius: 20px;
     border-top-right-radius: 20px;
+        border-bottom-left-radius: 20px;
+        border-bottom-right-radius: 20px;
     background:linear-gradient(to top left ,#c9e4dee1,#5f7776);
 }
 

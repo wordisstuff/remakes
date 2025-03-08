@@ -1,6 +1,8 @@
 .container{
         width: 100%;
+        border-top-left-radius: 20px;
+        border-top-right-radius: 20px;
         border-bottom-left-radius: 20px;
         border-bottom-right-radius: 20px;
-        background: linear-gradient(to bottom left, #b6c9c8, #5f7776);
+        background: linear-gradient(to bottom left, #b6c9c8d8, #5f7776b7);
 }
