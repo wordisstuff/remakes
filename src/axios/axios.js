@@ -13,6 +13,6 @@ export const clearAuthHeader = () => {
 };
 
 export const songApi = axios.create({
-    baseURL: urla,
+    baseURL: urla(),
     withCredentials: true,
 });
