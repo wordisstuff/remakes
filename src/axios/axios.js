@@ -1,8 +1,9 @@
 import axios from 'axios';
 
-// const urla = 'https://67a4109531d0d3a6b7854249.mockapi.io/songs';
-
-const urla = 'http://localhost:8080';
+const urla = () =>
+    window.location.hostname === 'localhost'
+        ? 'http://localhost:8080'
+        : 'https://remakes-back.onrender.com';
 
 export const setAuthHeader = token => {
     songApi.defaults.headers.common.Authorization = `Bearer ${token}`;
