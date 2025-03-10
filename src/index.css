@@ -1,4 +1,5 @@
 @import url('./style/vars.css');
+@import "tailwindcss";
 
 /* @font-face {
     font-family: 'Poppins';

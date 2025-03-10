@@ -13,7 +13,7 @@
 }
 .ava{
     cursor: pointer;
-    background-color: var(--light-blue);
+    background-color: var(--light-blue-hover);
     height: 200px;
     border-radius: 7px;
 }
@@ -26,10 +26,13 @@
     height: 60px;
     cursor: pointer;
     border-radius: 7px;
-    background-color: #f8e3ade1;
+    background-color: #f8e3ada6;
     margin-top: 2px;
 }
 
 .home:hover {
     background-color: #e4e4e4;
+}
+.ava:hover{
+    background-color: var(--light-blue);
 }

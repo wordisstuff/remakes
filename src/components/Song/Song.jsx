@@ -3,6 +3,7 @@ import { getAllSongs } from '../../redux/song/operation';
 import { useEffect } from 'react';
 import { selectSongs } from '../../redux/song/selectors';
 import CSS from './Song.module.css';
+import AudioVisualizer from '../../utils/AudioVisualizer';
 
 const Song = () => {
     const songs = useSelector(selectSongs);
@@ -15,15 +16,15 @@ const Song = () => {
     return (
         <section className={CSS.section}>
             <ul className={CSS.homebox}>
-                {songs !== null &&
+                <AudioVisualizer />
+                {/* {songs !== null &&
                     songs.map(({ _id, title, author, price }) => {
                         return (
                             <li key={_id}>
-                                <img
-                                    className={CSS.ava}
-                                    src={123}
-                                    alt="Avatar"
-                                />
+                                <div className={CSS.ava}>
+                                    <img src={123} alt="Avatar" />
+                                    <AudioVisualizer />
+                                </div>
                                 <div
                                     className={CSS.home}
                                     onClick={() => console.log('123')}
@@ -34,7 +35,7 @@ const Song = () => {
                                 </div>
                             </li>
                         );
-                    })}
+                    })} */}
             </ul>
         </section>
     );
