@@ -3,7 +3,8 @@ import { getAllSongs } from '../../redux/song/operation';
 import { useEffect } from 'react';
 import { selectSongs } from '../../redux/song/selectors';
 import CSS from './Song.module.css';
-import AudioVisualizer from '../../utils/AudioVisualizer';
+import WaveformPlayer from '../../utils/WaveformPlayer';
+// import AudioVisualizer from '../../utils/AudioVisualizer';
 
 const Song = () => {
     const songs = useSelector(selectSongs);
@@ -15,8 +16,9 @@ const Song = () => {
     console.log(songs);
     return (
         <section className={CSS.section}>
+            <WaveformPlayer audioUrl="/music/Remake.mp3" />
             <ul className={CSS.homebox}>
-                <AudioVisualizer />
+                {/* <AudioVisualizer /> */}
                 {/* {songs !== null &&
                     songs.map(({ _id, title, author, price }) => {
                         return (
