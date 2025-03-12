@@ -9,28 +9,16 @@ const WaveformPlayer = ({ audioUrl }) => {
         if (!waveformRef.current) return;
 
         wavesurferRef.current = WaveSurfer.create({
-            // container: waveformRef.current,
-            // waveColor: '#ceddf5',
-            // progressColor: '#ff622d',
-            // responsive: true,
-            // barWidth: 1,
-            // barGap: 2,
-            height: 220,
-            // barHeight: 0,
-            // cursorWidth: 3,
-            // cursorColor: '#cbf6d0',
-
             container: waveformRef.current,
-            waveColor: '#007bff',
-            progressColor: '#ff5733',
-            backgroundColor: 'rgba(0, 0, 0, 0.1)',
-            cursorColor: 'black',
-            // height: 150,
-            barWidth: 4,
+            waveColor: '#ceddf5',
+            progressColor: '#ff622d',
+            responsive: true,
+            barWidth: 1,
             barGap: 2,
-            // scrollParent: true,
-            minPxPerSec: 50,
-            // autoScroll: true,
+            height: 220,
+            barHeight: 0,
+            cursorWidth: 3,
+            cursorColor: '#cbf6d0',
         });
         wavesurferRef.current.load(audioUrl);
 

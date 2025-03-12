@@ -1,22 +1,26 @@
 import { useDispatch, useSelector } from 'react-redux';
-import { getAllSongs } from '../../redux/song/operation';
+import { getMp3 } from '../../redux/song/operation';
 import { useEffect } from 'react';
-import { selectSongs } from '../../redux/song/selectors';
+import { selectMp3 } from '../../redux/song/selectors';
 import CSS from './Song.module.css';
 import WaveformPlayer from '../../utils/WaveformPlayer';
 // import AudioVisualizer from '../../utils/AudioVisualizer';
 
 const Song = () => {
-    const songs = useSelector(selectSongs);
     const dispatch = useDispatch();
 
+    const songName = 'Royksopp_Impossible_Remake.mp3';
+
     useEffect(() => {
-        dispatch(getAllSongs());
+        dispatch(getMp3(songName));
     }, [dispatch]);
-    console.log(songs);
+
+    const mp3Link = useSelector(selectMp3);
+    console.log(mp3Link);
+
     return (
         <section className={CSS.section}>
-            <WaveformPlayer audioUrl="/music/Remake.mp3" />
+            <WaveformPlayer audioUrl={mp3Link} />
             <ul className={CSS.homebox}>
                 {/* <AudioVisualizer /> */}
                 {/* {songs !== null &&

@@ -1,9 +1,10 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { getAllSongs } from './operation';
+import { getAllSongs, getMp3 } from './operation';
 const INIT_STATE = {
     songs: null,
     loading: false,
     error: null,
+    mp3Link: null,
 };
 
 const songSlice = createSlice({
@@ -12,6 +13,10 @@ const songSlice = createSlice({
     reducers: {},
     extraReducers: builder => {
         builder
+            .addCase(getMp3.fulfilled, (state, action) => {
+                state.loading = false;
+                state.mp3Link = action.payload.mp3Link;
+            })
             .addCase(getAllSongs.pending, state => {
                 (state.loading = true), (state.error = null);
             })
