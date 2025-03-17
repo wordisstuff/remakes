@@ -10,7 +10,7 @@ const WaveformPlayer = ({ audioUrl }) => {
 
         wavesurferRef.current = WaveSurfer.create({
             container: waveformRef.current,
-            waveColor: '#ceddf5',
+            waveColor: '#80acf3e9',
             progressColor: '#ff622d',
             responsive: true,
             barWidth: 1,
@@ -21,8 +21,17 @@ const WaveformPlayer = ({ audioUrl }) => {
             cursorColor: '#cbf6d0',
         });
         wavesurferRef.current.load(audioUrl);
+        wavesurferRef.current.on('error', error => {
+            console.error('WaveSurfer error:', error);
+        });
 
-        return () => wavesurferRef.current.destroy();
+        return () => {
+            if (wavesurferRef.current) {
+                wavesurferRef.current.stop();
+                wavesurferRef.current.destroy();
+                wavesurferRef.current = null;
+            }
+        };
     }, [audioUrl]);
 
     const handlePlayPause = () => {

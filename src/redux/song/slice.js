@@ -4,7 +4,7 @@ const INIT_STATE = {
     songs: null,
     loading: false,
     error: null,
-    mp3Link: null,
+    mp3: [],
 };
 
 const songSlice = createSlice({
@@ -15,7 +15,20 @@ const songSlice = createSlice({
         builder
             .addCase(getMp3.fulfilled, (state, action) => {
                 state.loading = false;
-                state.mp3Link = action.payload.mp3Link;
+                if (
+                    !state.mp3.some(
+                        item => item.mp3Name === action.payload.mp3Name,
+                    )
+                ) {
+                    state.mp3.push({
+                        mp3Link: action.payload.data.mp3Link,
+                        mp3Name: action.payload.mp3Name,
+                    });
+                } else {
+                    console.warn(
+                        `MP3 with name "${action.payload.mp3Name}" already exists.`,
+                    );
+                }
             })
             .addCase(getAllSongs.pending, state => {
                 (state.loading = true), (state.error = null);

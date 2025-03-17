@@ -9,6 +9,7 @@ import RestrictedRoute from '../Routes/RestrictedRoute';
 import AuthPage from '../../pages/AuthPage';
 import Signin from '../SignForm/Signin';
 import Signup from '../SignForm/Signup';
+import AddSong from '../AddSong/AddSong';
 function App() {
     useEffect(() => {
         Aos.init();
@@ -25,6 +26,7 @@ function App() {
         >
             <Routes>
                 <Route path="/" element={<Layout />}>
+                    <Route path="/addsong" element={<AddSong />} />
                     <Route index element={<Home />} />
                     <Route
                         path="/signin"
