@@ -166,6 +166,8 @@
         "UserSettingsForm": {
             "setting": "Setting",
             "uploadPhotoBtn": "Upload a photo",
+            "uploadMp3": "Upload mp3",
+            "uploadProject": "Upload project",
             "yourGenderLabel": "Your gender identity",
             "femaleGenderLabel": "Female",
             "femaleGenderMale": "Male",

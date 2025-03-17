@@ -14,7 +14,8 @@
 .ava{
     cursor: pointer;
     background-color: var(--light-blue-hover);
-    height: 200px;
+    width: 200px;
+    /* height: px; */
     border-radius: 7px;
 }
 .home {

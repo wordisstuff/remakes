@@ -25,23 +25,27 @@ const Song = () => {
             {/* <WaveformPlayer audioUrl={mp3Link[0].mp3Link} /> */}
             <ul className={CSS.homebox}>
                 {songs !== null &&
-                    songs.map(({ _id, title, author, price }) => {
-                        return (
-                            <li key={_id}>
-                                <div className={CSS.ava}>
-                                    <img src={123} alt="Avatar" />
-                                </div>
-                                <div
-                                    className={CSS.home}
-                                    onClick={() => console.log('123')}
-                                >
-                                    <p>{title}</p>
-                                    <p>{author}</p>
-                                    <p>{price}</p>
-                                </div>
-                            </li>
-                        );
-                    })}
+                    songs.map(
+                        ({ _id, songName, author, bpm, price, songPic }) => {
+                            return (
+                                <li key={_id}>
+                                    <div className={CSS.ava}>
+                                        <img src={songPic} alt="Avatar" />
+                                    </div>
+                                    <div
+                                        className={CSS.home}
+                                        onClick={() => console.log('123')}
+                                    >
+                                        <p>
+                                            {songName} - {author}
+                                        </p>
+                                        <p>Bpm: {bpm}</p>
+                                        <p>price: {price}</p>
+                                    </div>
+                                </li>
+                            );
+                        },
+                    )}
             </ul>
         </section>
     );

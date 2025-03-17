@@ -11,28 +11,75 @@ import { addSong } from '../../redux/song/operation.js';
 const AddSong = () => {
     const { t } = useTranslation();
 
-    const [songPic, setSongPic] = useState('123');
+    const [songPic, setSongPic] = useState('');
+    const [songMp3, setSongMp3] = useState('');
+    const [songProject, setSongProject] = useState('');
     const [songName, setSongName] = useState('songName');
     const [author, setAuthor] = useState('author');
     const [price, setPrice] = useState('price');
     const [bpm, setBpm] = useState('bpa');
     const songData = null;
 
-    const hiddenInputUpload = useRef(null);
+    const hiddenInputPic = useRef(null);
+    const hiddenInputProject = useRef(null);
+    const hiddenInputMp3 = useRef(null);
     const dispath = useDispatch();
 
-    const handleClick = e => {
+    const handleClickPic = e => {
         e.preventDefault();
-        if (hiddenInputUpload.current) {
-            hiddenInputUpload.current.click();
+        if (hiddenInputPic.current instanceof HTMLInputElement) {
+            hiddenInputPic.current.click();
         }
     };
-    const handleChange = e => {
+    const handleClickMp3 = e => {
+        e.preventDefault();
+        if (hiddenInputMp3.current instanceof HTMLInputElement) {
+            hiddenInputMp3.current.click();
+        }
+    };
+    const handleClickProject = e => {
+        e.preventDefault();
+        if (hiddenInputProject.current instanceof HTMLInputElement) {
+            hiddenInputProject.current.click();
+        }
+    };
+    const handleChangPic = e => {
         if (e.target.files) {
             const fileUploaded = e.target.files[0];
             setSongPic(fileUploaded);
         }
     };
+    const handleChangeMp3 = e => {
+        if (e.target.files) {
+            const fileUploaded = e.target.files[0];
+            setSongMp3(fileUploaded);
+        }
+    };
+    const handleChangProject = e => {
+        if (e.target.files) {
+            const fileUploaded = e.target.files[0];
+            setSongProject(fileUploaded);
+        }
+    };
+    // const handleChange = e => {
+    //     if (e.target.files) {
+    //         const fileUploaded = e.target.files[0];
+    //         const fileExtension = fileUploaded.name
+    //             .split('.')
+    //             .pop()
+    //             .toLowerCase();
+
+    //         if (fileExtension === 'mp3') {
+    //             setSongMp3(fileUploaded);
+    //         } else if (fileExtension === 'rar') {
+    //             setSongProject(fileUploaded);
+    //         } else if (['jpg', 'jpeg', 'png', 'webp'].includes(fileExtension)) {
+    //             setSongPic(fileUploaded);
+    //         } else {
+    //             console.warn('Непідтримуваний формат файлу:', fileExtension);
+    //         }
+    //     }
+    // };
 
     const handleSubmit = async e => {
         e.preventDefault();
@@ -43,6 +90,8 @@ const AddSong = () => {
             songPic,
             price,
             bpm,
+            songMp3,
+            songProject,
         };
         try {
             const validatedData = await songSchema.validate(validationData, {
@@ -54,6 +103,8 @@ const AddSong = () => {
             formData.append('songPic', validatedData.songPic);
             formData.append('price', validatedData.price);
             formData.append('bpm', validatedData.bpm);
+            formData.append('songMp3', validatedData.songMp3);
+            formData.append('songProject', validatedData.songProject);
 
             console.log(formData);
 
@@ -95,7 +146,7 @@ const AddSong = () => {
                         </div>
                         <div
                             className={CSS.uploadWrapper}
-                            onClick={handleClick}
+                            onClick={handleClickPic}
                         >
                             <svg className={CSS.iconUpload}>
                                 <use xlinkHref={`${icons}#upload`} />
@@ -108,8 +159,8 @@ const AddSong = () => {
                             type="file"
                             style={{ display: 'none' }}
                             accept=".jpg,.jpeg,.png,.webp"
-                            onChange={handleChange}
-                            ref={hiddenInputUpload}
+                            onChange={handleChangPic}
+                            ref={hiddenInputPic}
                         />
                     </div>
                 </div>
@@ -135,6 +186,46 @@ const AddSong = () => {
                             className={CSS.songInfoInput}
                             name={bpm}
                             setFunc={setBpm}
+                        />
+                    </div>
+                    <div>
+                        <div
+                            className={CSS.uploadWrapper}
+                            onClick={handleClickMp3}
+                        >
+                            <svg className={CSS.iconUpload}>
+                                <use xlinkHref={`${icons}#upload`} />
+                            </svg>
+                            <p className={CSS.textRegular}>
+                                {t('modals.UserSettingsForm.uploadMp3')}
+                            </p>
+                        </div>
+                        <input
+                            type="file"
+                            style={{ display: 'none' }}
+                            accept=".mp3"
+                            onChange={handleChangeMp3}
+                            ref={hiddenInputMp3}
+                        />
+                    </div>
+                    <div>
+                        <div
+                            className={CSS.uploadWrapper}
+                            onClick={handleClickProject}
+                        >
+                            <svg className={CSS.iconUpload}>
+                                <use xlinkHref={`${icons}#upload`} />
+                            </svg>
+                            <p className={CSS.textRegular}>
+                                {t('modals.UserSettingsForm.uploadProject')}
+                            </p>
+                        </div>
+                        <input
+                            type="file"
+                            style={{ display: 'none' }}
+                            accept=".rar,.zip"
+                            onChange={handleChangProject}
+                            ref={hiddenInputProject}
                         />
                     </div>
                     <div className={CSS.buttonContainer}>
