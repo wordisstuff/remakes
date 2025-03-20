@@ -18,7 +18,7 @@ const Song = () => {
 
     // const mp3Link = useSelector(selectMp3);
     const songs = useSelector(selectSongs);
-    // console.log(mp3Link[0].mp3Link);
+    console.log(songs);
 
     return (
         <section className={CSS.section}>
