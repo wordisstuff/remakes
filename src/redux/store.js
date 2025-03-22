@@ -19,13 +19,19 @@ const authPersistConfig = {
     storage,
     whitelist: ['token', 'refreshToken'],
 };
+const songsPersistConfig = {
+    key: 'songs',
+    storage,
+    whitelist: ['songs', 'cart'],
+};
 
 const persistedAuth = persistReducer(authPersistConfig, authReducer);
+const persistedSongs = persistReducer(songsPersistConfig, songReducer);
 
 export const store = configureStore({
     reducer: {
         auth: persistedAuth,
-        song: songReducer,
+        song: persistedSongs,
         global: globalReducer,
     },
     middleware: getDefaultMiddleware =>

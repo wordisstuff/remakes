@@ -1,4 +1,9 @@
-const Input = ({ name, setFunc, songData, className }) => {
+const Input = ({
+    name,
+    setFunc,
+    // songData,
+    className,
+}) => {
     return (
         <input
             className={className}

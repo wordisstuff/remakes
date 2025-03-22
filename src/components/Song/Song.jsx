@@ -1,22 +1,22 @@
 import { useDispatch, useSelector } from 'react-redux';
 import { getAllSongs } from '../../redux/song/operation';
 import { useEffect } from 'react';
-import { selectSongs } from '../../redux/song/selectors';
+import { selectCart, selectSongs } from '../../redux/song/selectors';
 import CSS from './Song.module.css';
+import AudioPlayer from '../AudioPlayer/AudioPlayer';
+import { icons } from '../../icons/index.js';
+import { addToCart } from '../../redux/song/slice.js';
+import clsx from 'clsx';
 // import WaveformPlayer from '../../utils/WaveformPlayer';
 // import AudioVisualizer from '../../utils/AudioVisualizer';
-
 const Song = () => {
     const dispatch = useDispatch();
-
-    // const songName = 'Royksopp_Impossible_Remake.mp3';
+    const cart = useSelector(selectCart);
 
     useEffect(() => {
-        // dispatch(getMp3(songName));
         dispatch(getAllSongs());
     }, [dispatch]);
 
-    // const mp3Link = useSelector(selectMp3);
     const songs = useSelector(selectSongs);
     console.log(songs);
 
@@ -25,27 +25,66 @@ const Song = () => {
             {/* <WaveformPlayer audioUrl={mp3Link[0].mp3Link} /> */}
             <ul className={CSS.homebox}>
                 {songs !== null &&
-                    songs.map(
-                        ({ _id, songName, author, bpm, price, songPic }) => {
-                            return (
-                                <li key={_id}>
-                                    <div className={CSS.ava}>
-                                        <img src={songPic} alt="Avatar" />
+                    songs.map(i => {
+                        const {
+                            _id,
+                            songName,
+                            author,
+                            bpm,
+                            price,
+                            songPic,
+                            songMp3,
+                        } = i;
+                        return (
+                            <li key={_id} className={CSS.song}>
+                                <div className={CSS.ava}>
+                                    <img
+                                        src={songPic}
+                                        alt="Avatar"
+                                        className={CSS.img}
+                                    />
+                                </div>
+                                <AudioPlayer
+                                    audio={songMp3}
+                                    className={CSS.player}
+                                />
+                                <div
+                                    className={CSS.info}
+                                    onClick={() => console.log('123')}
+                                >
+                                    <h2 className={CSS.title}>
+                                        {author} - {songName}
+                                    </h2>
+                                    <div className={CSS.infoText}>
+                                        <p>bpm: {bpm}</p>
+                                        <span className={CSS.price}>
+                                            {price} $
+                                        </span>
+                                        <a
+                                            className={clsx(CSS.addCartLink)}
+                                            onClick={() =>
+                                                dispatch(
+                                                    addToCart({ songId: _id }),
+                                                )
+                                            }
+                                        >
+                                            <svg className={CSS.iconCart}>
+                                                <use
+                                                    xlinkHref={
+                                                        !cart.some(
+                                                            i => i._id === _id,
+                                                        )
+                                                            ? `${icons}#scart`
+                                                            : `${icons}#sfcart`
+                                                    }
+                                                />
+                                            </svg>
+                                        </a>
                                     </div>
-                                    <div
-                                        className={CSS.home}
-                                        onClick={() => console.log('123')}
-                                    >
-                                        <p>
-                                            {songName} - {author}
-                                        </p>
-                                        <p>Bpm: {bpm}</p>
-                                        <p>price: {price}</p>
-                                    </div>
-                                </li>
-                            );
-                        },
-                    )}
+                                </div>
+                            </li>
+                        );
+                    })}
             </ul>
         </section>
     );

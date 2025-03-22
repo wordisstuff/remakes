@@ -1,9 +1,11 @@
-import {useLocation } from 'react-router-dom';
-import {icons} from '../../icons/index.js';
+import { useLocation } from 'react-router-dom';
+import { icons } from '../../icons/index.js';
 import CSS from './Header.module.css';
-import {Arr} from '../../constants/consts.js'
+import { useSelector } from 'react-redux';
+import { selectCart } from '../../redux/song/selectors.js';
 
 const Header = () => {
+    const cartArr = useSelector(selectCart);
     const activ = useLocation();
     return (
         <>
@@ -18,16 +20,23 @@ const Header = () => {
                                 <a className={activ.pathname === '/'? CSS.activ:''} href="/">Remakes</a>
                             </li> */}
                             <li>
-                                <a  className={activ.pathname === '/cart'? CSS.activ:''} href="/cart">
-                                <svg className={CSS.iconCart}>
-                                    <use
-                                        xlinkHref={
-                                            Arr.length===0
-                                                ? `${icons}#scart`
-                                                : `${icons}#sfcart`
-                                        }
-                                    />
-                                </svg>
+                                <a
+                                    className={
+                                        activ.pathname === '/cart'
+                                            ? CSS.activ
+                                            : ''
+                                    }
+                                    href="/cart"
+                                >
+                                    <svg className={CSS.iconCart}>
+                                        <use
+                                            xlinkHref={
+                                                cartArr.length === 0
+                                                    ? `${icons}#scart`
+                                                    : `${icons}#sfcart`
+                                            }
+                                        />
+                                    </svg>
                                 </a>
                             </li>
                         </ul>

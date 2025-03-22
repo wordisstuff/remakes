@@ -1,3 +1,8 @@
+.song{
+    width: 220px;
+    height: 340px;
+    overflow: hidden;
+}
 .section {
     width: 100%;
 }
@@ -9,31 +14,73 @@
     align-items: center;
     gap: 16px;
     border-radius: 20px;
+    /* background-color: transparent; */
 
 }
 .ava{
     cursor: pointer;
-    background-color: var(--light-blue-hover);
-    width: 200px;
-    /* height: px; */
-    border-radius: 7px;
+    /* background-color: var(--light-blue-hover); */
+    /* width: 200px;  */
+    /* height: 200px; */
+    border-radius: 10px;
 }
-.home {
+.img{
+    /* object-fit:cover; */
+    border-radius: 10px;
+}
+.info {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    width: 222px;
     height: 60px;
     cursor: pointer;
-    border-radius: 7px;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
     background-color: #f8e3ada6;
-    margin-top: 2px;
 }
 
-.home:hover {
+.info:hover {
     background-color: #e4e4e4;
 }
 .ava:hover{
     background-color: var(--light-blue);
+}
+.player{
+    margin-top: 1px;
+    height: 20px;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+    border-top-left-radius: 10px;   
+    border-top-right-radius: 10px;
+}
+.infoText{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 22px;
+}
+.price{
+    border-radius: 5px;
+    /* width: 46px;
+    height: 38px; */
+    background-color: rgb(229, 244, 138);
+    font-size: large;
+    text-align: center;
+    padding: 6px ;
+}
+.title{
+    background-color: #c8c8c8;
+    padding: 1px 12px;
+    border-radius: 2px;
+}
+.iconCart{
+    width: 24px;
+    height: 24px;
+}
+
+.addCartLink{
+    cursor: pointer;
 }

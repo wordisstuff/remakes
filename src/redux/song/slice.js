@@ -5,12 +5,36 @@ const INIT_STATE = {
     loading: false,
     error: null,
     mp3: [],
+    cart: [],
 };
 
 const songSlice = createSlice({
     name: 'song',
     initialState: INIT_STATE,
-    reducers: {},
+    reducers: {
+        resetCart() {
+            return INIT_STATE;
+        },
+        addToCart(state, action) {
+            console.log(action.payload.songId);
+            const cartObjIds = state.cart.map(i => i._id);
+            console.log(cartObjIds);
+            console.log(action.payload.songId);
+            console.log(!cartObjIds.includes(action.payload.songId));
+
+            if (!cartObjIds.includes(action.payload.songId)) {
+                state.cart.push(
+                    ...state.songs.filter(i =>
+                        action.payload.songId.includes(i._id),
+                    ),
+                );
+            } else {
+                state.cart = state.cart.filter(
+                    i => i._id !== action.payload.songId,
+                );
+            }
+        },
+    },
     extraReducers: builder => {
         builder
             .addCase(getMp3.fulfilled, (state, action) => {
@@ -44,3 +68,5 @@ const songSlice = createSlice({
 });
 
 export const songReducer = songSlice.reducer;
+
+export const { addToCart, resetCart } = songSlice.actions;
