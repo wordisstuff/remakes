@@ -3,8 +3,11 @@ import { icons } from '../../icons/index.js';
 import CSS from './Header.module.css';
 import { useSelector } from 'react-redux';
 import { selectCart } from '../../redux/song/selectors.js';
+import { ImUser, ImUserCheck } from 'react-icons/im';
+import { selectIsLoggedIn } from '../../redux/auth/selectors.js';
 
 const Header = () => {
+    const isLoggedIn = useSelector(selectIsLoggedIn);
     const cartArr = useSelector(selectCart);
     const activ = useLocation();
     return (
@@ -37,6 +40,23 @@ const Header = () => {
                                             }
                                         />
                                     </svg>
+                                </a>
+                            </li>
+                            <li>
+                                <a
+                                    className={
+                                        activ.pathname === '/signin' ||
+                                        activ.pathname === '/signup'
+                                            ? CSS.activ
+                                            : ''
+                                    }
+                                    href="/signin"
+                                >
+                                    {!isLoggedIn ? (
+                                        <ImUser className={CSS.iconCart} />
+                                    ) : (
+                                        <ImUserCheck className={CSS.iconCart} />
+                                    )}
                                 </a>
                             </li>
                         </ul>

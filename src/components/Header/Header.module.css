@@ -1,6 +1,6 @@
 
 .activ{
-    color: #ff5722;
+    color: #22ff7a;
 }
 .header{
     /* width: 360px; */
@@ -57,7 +57,7 @@ nav ul li a {
 }
 
 nav ul li a:hover {
-    color: #ff5722;
+    color: #fe6c2e;
 }
 .iconCart{
     width: 32px;
