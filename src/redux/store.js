@@ -13,6 +13,7 @@ import {
 } from 'redux-persist';
 import { authReducer } from './auth/slice';
 import { globalReducer } from './global/slice';
+import { modalReducer } from './modal/slice';
 
 const authPersistConfig = {
     key: 'auth',
@@ -30,6 +31,7 @@ const persistedSongs = persistReducer(songsPersistConfig, songReducer);
 
 export const store = configureStore({
     reducer: {
+        modal: modalReducer,
         auth: persistedAuth,
         song: persistedSongs,
         global: globalReducer,

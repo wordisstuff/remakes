@@ -1,0 +1,3 @@
+export const selectModalContent = state => state.modal.modalContent;
+export const selectIsOpenModal = state => state.modal.isOpen;
+export const selectModal = state => state.modal;

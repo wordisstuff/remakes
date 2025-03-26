@@ -56,6 +56,7 @@ export const currentUser = createAsyncThunk(
             }
             setAuthHeader(token);
             const { data } = await songApi.get('/auth/current');
+            console.log(data);
             return data;
         } catch {
             return rejectWithValue(null);

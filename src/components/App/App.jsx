@@ -10,10 +10,19 @@ import AuthPage from '../../pages/AuthPage';
 import Signin from '../SignForm/Signin';
 import Signup from '../SignForm/Signup';
 import AddSong from '../AddSong/AddSong';
+import { useDispatch, useSelector } from 'react-redux';
+import { currentUser } from '../../redux/auth/operation';
+import { selectIsRefreshing } from '../../redux/auth/selectors';
 function App() {
+    const dispatch = useDispatch();
+    const isRfreshing = useSelector(selectIsRefreshing);
     useEffect(() => {
         Aos.init();
     }, []);
+    useEffect(() => {
+        dispatch(currentUser());
+    }, [dispatch]);
+    if (isRfreshing) return null;
     return (
         <div
             style={{
