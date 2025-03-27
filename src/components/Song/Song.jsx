@@ -52,9 +52,9 @@ const Song = () => {
                                     className={CSS.info}
                                     onClick={() => console.log('123')}
                                 >
-                                    <h2 className={CSS.title}>
+                                    <h3 className={CSS.title}>
                                         {author} - {songName}
-                                    </h2>
+                                    </h3>
                                     <div className={CSS.infoText}>
                                         <p>bpm: {bpm}</p>
                                         <span className={CSS.price}>

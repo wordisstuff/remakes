@@ -26,7 +26,7 @@ const UserBar = () => {
     };
 
     const handleOpenModal = modalComponent => {
-        dispatch(openModal(modalComponent));
+        dispatch(openModal({ type: 'open_modal', payload: modalComponent }));
         setIsPopoverOpen(false);
     };
 
