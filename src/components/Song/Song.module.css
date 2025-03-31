@@ -9,9 +9,8 @@
     align-items: center;
     gap: 16px;
     border-radius: 20px;
-
 }
-.ava{
+.ava {
     cursor: pointer;
     background-color: var(--light-blue-hover);
     height: 200px;
@@ -33,6 +32,72 @@
 .home:hover {
     background-color: #e4e4e4;
 }
-.ava:hover{
+.ava:hover {
     background-color: var(--light-blue);
+}
+
+.modalOverlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.modal {
+    width: 800px;
+    height: 650px;
+    background: var(--light-blue);
+    padding: 20px;
+    border-radius: 20px;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.closeButton {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    background: none;
+    border: none;
+    font-size: 28px;
+    cursor: pointer;
+}
+
+.modalDescription {
+    position: absolute;
+    top: 80px;
+    left: 40px;
+    display: flex;
+    flex-direction: column;
+}
+
+.modalName {
+    font-size: 50px;
+    font-weight: 600;
+    padding-bottom: 10px;
+}
+
+.modalAuthor {
+    font-size: 28px;
+    font-weight: 500;
+    padding-bottom: 50px;
+}
+
+.modalPrice {
+    font-size: 30px;
+    font-weight: 500;
+}
+
+.modalAudio {
+    display: flex;
+    margin-bottom: 200px;
+    margin-top: 0;
 }
