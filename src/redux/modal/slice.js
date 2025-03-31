@@ -4,17 +4,17 @@ const modalSlice = createSlice({
     name: 'modal',
     initialState: {
         isOpen: false,
-        modalContent: null,
+        modalType: null,
     },
     reducers: {
         openModal(state, action) {
             console.log(action.payload);
             state.isOpen = true;
-            state.modalContent = action.payload;
+            state.modalType = action.payload;
         },
         closeModal(state) {
             state.isOpen = false;
-            state.modalContent = null;
+            state.modalType = null;
         },
     },
 });

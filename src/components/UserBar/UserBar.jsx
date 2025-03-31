@@ -4,8 +4,6 @@ import { useTranslation } from 'react-i18next';
 import css from './UserBar.module.css';
 import { RxAvatar } from 'react-icons/rx';
 import { icons } from '../../icons/index.js';
-import LogOutModal from '../Modals/LogOut/LogOut.jsx';
-import UserSettingsModal from '../Modals/UserSettings/UserSettings.jsx';
 import { openModal } from '../../redux/modal/slice.js';
 import { selectUser } from '../../redux/auth/selectors.js';
 
@@ -25,8 +23,8 @@ const UserBar = () => {
         return fullName ? fullName.split(' ')[0] : t('UserBar.user');
     };
 
-    const handleOpenModal = modalComponent => {
-        dispatch(openModal({ type: 'open_modal', payload: modalComponent }));
+    const handleOpenModal = type => {
+        dispatch(openModal(type));
         setIsPopoverOpen(false);
     };
 
@@ -65,9 +63,7 @@ const UserBar = () => {
                         <ul className={css.wrapperModal}>
                             <li>
                                 <a
-                                    onClick={() =>
-                                        handleOpenModal(<UserSettingsModal />)
-                                    }
+                                    onClick={() => handleOpenModal('settings')}
                                     className={css.userBarModal}
                                     href="#settings"
                                 >
@@ -80,9 +76,7 @@ const UserBar = () => {
                             <li>
                                 <a
                                     className={css.userBarModal}
-                                    onClick={() =>
-                                        handleOpenModal(<LogOutModal />)
-                                    }
+                                    onClick={() => handleOpenModal('logout')}
                                 >
                                     <svg width="16" height="16">
                                         <use xlinkHref={`${icons}#log-out`} />

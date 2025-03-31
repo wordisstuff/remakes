@@ -4,6 +4,7 @@ import Header from '../Header/Header';
 import Container from '../Container/Container';
 import CSS from './Layout.module.css';
 import { Toaster } from 'react-hot-toast';
+import Footer from '../Footer/Footer';
 
 const Layout = () => {
     return (
@@ -19,6 +20,11 @@ const Layout = () => {
                         <Outlet />
                     </Container>
                 </main>
+                <footer>
+                    <Container className={CSS.container}>
+                        <Footer />
+                    </Container>
+                </footer>
             </Suspense>
             <Toaster position="top-right" reverseOrder={true} />
         </>

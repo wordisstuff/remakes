@@ -13,6 +13,8 @@ import AddSong from '../AddSong/AddSong';
 import { useDispatch, useSelector } from 'react-redux';
 import { currentUser } from '../../redux/auth/operation';
 import { selectIsRefreshing } from '../../redux/auth/selectors';
+import License from '../Modals/License/License';
+import Modals from '../Modals/Modals';
 function App() {
     const dispatch = useDispatch();
     const isRfreshing = useSelector(selectIsRefreshing);
@@ -36,6 +38,7 @@ function App() {
             <Routes>
                 <Route path="/" element={<Layout />}>
                     <Route path="/addsong" element={<AddSong />} />
+                    <Route path="/license" element={<License />} />
                     <Route index element={<Home />} />
                     <Route
                         path="/signin"
@@ -66,6 +69,7 @@ function App() {
                     <Route path="/cart" element={<Cart />} />
                 </Route>
             </Routes>
+            <Modals />
         </div>
     );
 }

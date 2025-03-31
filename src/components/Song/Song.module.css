@@ -58,21 +58,23 @@
 }
 .infoText{
     display: flex;
-    justify-content: center;
+    justify-content: space-evenly;
     align-items: center;
+    width: 100%;
     gap: 22px;
 }
 .price{
     border-radius: 5px;
     /* width: 46px;
     height: 38px; */
-    background-color: rgb(229, 244, 138);
+    /* background-color: rgb(229, 244, 138); */
     font-size: large;
     text-align: center;
     padding: 6px ;
+    color: #12267f;
 }
 .title{
-    background-color: #c8c8c8;
+    color: #12267f;
     padding: 1px 12px;
     border-radius: 2px;
 }

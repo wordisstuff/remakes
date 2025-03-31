@@ -16,7 +16,10 @@ const Header = () => {
             <header className={CSS.header}>
                 <div className={CSS.container}>
                     <div className={CSS.logo}>
-                        <a href="/">MB</a>
+                        <a href="/" className={CSS.logoLink}>
+                            <img src="/MB.png" className={CSS.logoPic} />
+                        </a>
+                        <h1 className={CSS.title}>music barrel</h1>
                     </div>
                     <nav>
                         <ul>

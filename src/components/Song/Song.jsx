@@ -30,7 +30,7 @@ const Song = () => {
                             _id,
                             songName,
                             author,
-                            bpm,
+                            // bpm,
                             price,
                             songPic,
                             songMp3,
@@ -56,11 +56,14 @@ const Song = () => {
                                         {author} - {songName}
                                     </h3>
                                     <div className={CSS.infoText}>
-                                        <p>bpm: {bpm}</p>
+                                        {/* <p>bpm: {bpm}</p> */}
                                         <span className={CSS.price}>
                                             {price} $
                                         </span>
                                         <a
+                                            // style={{
+                                            //     cursor: 'url(/click32.png),auto',
+                                            // }}
                                             className={clsx(CSS.addCartLink)}
                                             onClick={() =>
                                                 dispatch(
