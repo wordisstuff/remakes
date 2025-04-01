@@ -8,6 +8,7 @@ import AudioPlayer from '../AudioPlayer/AudioPlayer.jsx';
 const Cart = () => {
     const dispatch = useDispatch();
     const cart = useSelector(selectCart);
+
     const totalPrice = cart.reduce((ac, s) => ac + s.price, 0);
     console.log(totalPrice);
     return (
