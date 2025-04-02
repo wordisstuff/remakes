@@ -7,6 +7,7 @@ import AudioPlayer from '../AudioPlayer/AudioPlayer';
 import { icons } from '../../icons/index.js';
 import { addToCart } from '../../redux/song/slice.js';
 import clsx from 'clsx';
+import { openModal } from '../../redux/modal/slice.js';
 // import WaveformPlayer from '../../utils/WaveformPlayer';
 // import AudioVisualizer from '../../utils/AudioVisualizer';
 const Song = () => {
@@ -26,6 +27,7 @@ const Song = () => {
             <ul className={CSS.homebox}>
                 {songs !== null &&
                     songs.map(i => {
+                        console.log(i);
                         const {
                             _id,
                             songName,
@@ -36,7 +38,15 @@ const Song = () => {
                             songMp3,
                         } = i;
                         return (
-                            <li key={_id} className={CSS.song}>
+                            <li
+                                key={_id}
+                                onClick={() =>
+                                    dispatch(
+                                        openModal({ type: 'song', content: i }),
+                                    )
+                                }
+                                className={CSS.song}
+                            >
                                 <div className={CSS.ava}>
                                     <img
                                         src={songPic}

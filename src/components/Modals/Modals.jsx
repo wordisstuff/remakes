@@ -7,6 +7,8 @@ import Modal from 'react-modal';
 import { useEffect } from 'react';
 import { closeModal } from '../../redux/modal/slice';
 import { selectModal } from '../../redux/modal/selectors';
+import { SongModal } from './Song/SongModal.jsx';
+import CSS from './Modals.module.css';
 
 Modal.setAppElement('#root');
 
@@ -34,6 +36,8 @@ const Modals = () => {
                 return <SettingsModal />;
             case 'license':
                 return <License />;
+            case 'song':
+                return <SongModal />;
             default:
                 return null;
         }
@@ -59,7 +63,10 @@ const Modals = () => {
                 },
             }}
         >
-            <button className={CSS.closeButton}>
+            <button
+                className={CSS.closeButton}
+                onClick={() => dispatch(closeModal())}
+            >
                 <svg className={CSS.iconClose}>
                     <use xlinkHref={`${icons}#close`} />
                 </svg>
