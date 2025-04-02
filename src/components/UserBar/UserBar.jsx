@@ -24,7 +24,7 @@ const UserBar = () => {
     };
 
     const handleOpenModal = type => {
-        dispatch(openModal(type));
+        dispatch(openModal({ type: type }));
         setIsPopoverOpen(false);
     };
 
