@@ -30,12 +30,6 @@ const UserBar = () => {
 
     return (
         <div className={css.userBarWrapper}>
-            {/* <h2 className={css.userWelcome}>
-                {t('UserBar.welkome')}
-                <span className={css.name}>
-                    , {getFirstName(userMainInfo?.name)}!
-                </span>
-            </h2> */}
             <div className={css.userBarPanel}>
                 <button className={css.userBarBtn} onClick={togglePopover}>
                     {getFirstName(userMainInfo?.name)}
