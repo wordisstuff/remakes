@@ -99,7 +99,8 @@
 .userBarModal {
     color: var(--userbar-color);
     display: block;
-    display: flex;
+    /* display: flex; */
+    flex-direction: row;
     gap: 8px;
     cursor: pointer;
 

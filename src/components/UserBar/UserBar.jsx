@@ -68,9 +68,9 @@ const UserBar = () => {
                                     href="#settings"
                                 >
                                     <svg width="16" height="16">
-                                        <use xlinkHref={`${icons}#settings`} />
+                                        <use xlinkHref={`${icons}#settings`}  />
                                     </svg>
-                                    {t('UserBar.settings')}
+                                    {/* {t('UserBar.settings')} */}
                                 </a>
                             </li>
                             <li>
@@ -81,7 +81,7 @@ const UserBar = () => {
                                     <svg width="16" height="16">
                                         <use xlinkHref={`${icons}#log-out`} />
                                     </svg>
-                                    {t('UserBar.logOut')}
+                                    {/* {t('UserBar.logOut')} */}
                                 </a>
                             </li>
                         </ul>
