@@ -1,6 +1,6 @@
 import css from './UserSettings.module.css';
 import toast from 'react-hot-toast';
-import { useEffect, useMemo, useRef, useState } from 'react';
+import { useMemo, useRef, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { icons } from '../../../icons/index.js';
 import * as Yup from 'yup';
@@ -17,7 +17,7 @@ export const UserSettingsModal = () => {
     const [gender, setGender] = useState(userData.gender);
     const [email, setEmail] = useState(userData.email);
     const [userAvatar, setUserAvatar] = useState(userData.photo);
- 
+
     const dispatch = useDispatch();
     console.log(user);
     console.log(userAvatar);
@@ -32,7 +32,7 @@ export const UserSettingsModal = () => {
         ),
         photo: Yup.mixed(),
     });
-    
+
     const hiddenInputUpload = useRef(null);
 
     const handleClick = e => {

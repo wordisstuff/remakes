@@ -46,7 +46,7 @@ const Header = () => {
                                     </svg>
                                 </a>
                             </li>
-                            <li>
+                            {/* <li>
                                 <a
                                     className={
                                         activ.pathname === '/signin' ||
@@ -62,7 +62,7 @@ const Header = () => {
                                         <ImUserCheck className={CSS.iconCart} />
                                     )}
                                 </a>
-                            </li>
+                            </li> */}
                             <UserBar />
                         </ul>
                     </nav>

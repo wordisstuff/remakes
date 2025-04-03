@@ -5,11 +5,12 @@ import css from './UserBar.module.css';
 import { RxAvatar } from 'react-icons/rx';
 import { icons } from '../../icons/index.js';
 import { openModal } from '../../redux/modal/slice.js';
-import { selectUser } from '../../redux/auth/selectors.js';
+import { selectIsLoggedIn, selectUser } from '../../redux/auth/selectors.js';
 
 const UserBar = () => {
     const { t } = useTranslation();
     const [isPopoverOpen, setIsPopoverOpen] = useState(false);
+    const isLoggedIn = useSelector(selectIsLoggedIn);
 
     const userMainInfo = useSelector(selectUser);
     console.log('USER INFO', userMainInfo);
@@ -32,11 +33,11 @@ const UserBar = () => {
         <div className={css.userBarWrapper}>
             <div className={css.userBarPanel}>
                 <button className={css.userBarBtn} onClick={togglePopover}>
-                    {getFirstName(userMainInfo?.name)}
+                    {/* {getFirstName(userMainInfo?.name)} */}
                     {userMainInfo?.photo ? (
                         <img
                             src={userMainInfo.photo}
-                            alt="User's Avatar"
+                            alt="Avatar"
                             className={css.avatar}
                         />
                     ) : (
@@ -55,29 +56,54 @@ const UserBar = () => {
                 {isPopoverOpen && (
                     <div className={css.userBarOpenPanel}>
                         <ul className={css.wrapperModal}>
-                            <li>
-                                <a
-                                    onClick={() => handleOpenModal('settings')}
-                                    className={css.userBarModal}
-                                    href="#settings"
-                                >
-                                    <svg width="16" height="16">
-                                        <use xlinkHref={`${icons}#settings`}  />
-                                    </svg>
-                                    {/* {t('UserBar.settings')} */}
-                                </a>
-                            </li>
-                            <li>
-                                <a
-                                    className={css.userBarModal}
-                                    onClick={() => handleOpenModal('logout')}
-                                >
-                                    <svg width="16" height="16">
-                                        <use xlinkHref={`${icons}#log-out`} />
-                                    </svg>
-                                    {/* {t('UserBar.logOut')} */}
-                                </a>
-                            </li>
+                            {!isLoggedIn && (
+                                <li>
+                                    <a
+                                        className={css.userBarModal}
+                                        href="/signin"
+                                    >
+                                        <svg className={css.loginIcon}>
+                                            <use xlinkHref={`${icons}#login`} />
+                                        </svg>
+                                        {/* {t('UserBar.logOut')} */}
+                                    </a>
+                                </li>
+                            )}
+                            {isLoggedIn && (
+                                <li>
+                                    <a
+                                        onClick={() =>
+                                            handleOpenModal('settings')
+                                        }
+                                        className={css.userBarModal}
+                                        href="#settings"
+                                    >
+                                        <svg className={css.loginSettings}>
+                                            <use
+                                                xlinkHref={`${icons}#settings`}
+                                            />
+                                        </svg>
+                                        {/* {t('UserBar.settings')} */}
+                                    </a>
+                                </li>
+                            )}
+                            {isLoggedIn && (
+                                <li>
+                                    <a
+                                        className={css.userBarModal}
+                                        onClick={() =>
+                                            handleOpenModal('logout')
+                                        }
+                                    >
+                                        <svg className={css.logoutIcon}>
+                                            <use
+                                                xlinkHref={`${icons}#log-out`}
+                                            />
+                                        </svg>
+                                        {/* {t('UserBar.logOut')} */}
+                                    </a>
+                                </li>
+                            )}
                         </ul>
                     </div>
                 )}
