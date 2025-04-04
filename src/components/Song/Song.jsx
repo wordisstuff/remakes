@@ -75,11 +75,12 @@ const Song = () => {
                                             //     cursor: 'url(/click32.png),auto',
                                             // }}
                                             className={clsx(CSS.addCartLink)}
-                                            onClick={() =>
+                                            onClick={e => {
+                                                e.stopPropagation();
                                                 dispatch(
                                                     addToCart({ songId: _id }),
-                                                )
-                                            }
+                                                );
+                                            }}
                                         >
                                             <svg className={CSS.iconCart}>
                                                 <use
