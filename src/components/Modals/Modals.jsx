@@ -9,6 +9,8 @@ import { closeModal } from '../../redux/modal/slice';
 import { selectModal } from '../../redux/modal/selectors';
 import { SongModal } from './Song/SongModal.jsx';
 import CSS from './Modals.module.css';
+import Signup from '../SignForm/Signup.jsx';
+import Signin from '../SignForm/Signin.jsx';
 
 Modal.setAppElement('#root');
 
@@ -38,6 +40,10 @@ const Modals = () => {
                 return <License />;
             case 'song':
                 return <SongModal />;
+            case 'signup':
+                return <Signup />;
+            case 'signin':
+                return <Signin />
             default:
                 return null;
         }

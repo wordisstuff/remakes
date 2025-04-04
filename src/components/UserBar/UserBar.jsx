@@ -60,7 +60,8 @@ const UserBar = () => {
                                 <li>
                                     <a
                                         className={css.userBarModal}
-                                        href="/signin"
+                                        // href="/signin"
+                                        onClick={()=>dispatch(openModal({type:'signin'}))}
                                     >
                                         <svg className={css.loginIcon}>
                                             <use xlinkHref={`${icons}#login`} />
