@@ -40,11 +40,14 @@ const Song = () => {
                         return (
                             <li
                                 key={_id}
-                                onClick={() =>
+                                onClick={() => {
                                     dispatch(
-                                        openModal({ type: 'song', content: i }),
-                                    )
-                                }
+                                        openModal({
+                                            type: 'song',
+                                            content: i,
+                                        }),
+                                    );
+                                }}
                                 className={CSS.song}
                             >
                                 <div className={CSS.ava}>

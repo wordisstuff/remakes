@@ -17,6 +17,7 @@ Modal.setAppElement('#root');
 const Modals = () => {
     const dispatch = useDispatch();
     const { isOpen, modalType } = useSelector(selectModal);
+
     console.log(modalType, isOpen);
     useEffect(() => {
         if (isOpen) {
@@ -43,7 +44,7 @@ const Modals = () => {
             case 'signup':
                 return <Signup />;
             case 'signin':
-                return <Signin />
+                return <Signin />;
             default:
                 return null;
         }
