@@ -17,14 +17,14 @@ import License from '../Modals/License/License';
 import Modals from '../Modals/Modals';
 function App() {
     const dispatch = useDispatch();
-    const isRfreshing = useSelector(selectIsRefreshing);
+    const isRefreshing = useSelector(selectIsRefreshing);
     useEffect(() => {
         Aos.init();
     }, []);
     useEffect(() => {
         dispatch(currentUser());
     }, [dispatch]);
-    if (isRfreshing) return null;
+    if (isRefreshing) return null;
     return (
         <div
             style={{
