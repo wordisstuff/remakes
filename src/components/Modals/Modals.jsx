@@ -28,7 +28,7 @@ const Modals = () => {
             document.body.style.overflow = 'unset';
         };
     }, [isOpen]);
-    if (!isOpen) return null;
+    // if (!isOpen) return null;
 
     const renderModalContent = () => {
         switch (modalType) {
@@ -43,7 +43,7 @@ const Modals = () => {
             case 'signup':
                 return <Signup />;
             case 'signin':
-                return <Signin />
+                return <Signin />;
             default:
                 return null;
         }
