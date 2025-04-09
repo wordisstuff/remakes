@@ -7,8 +7,10 @@ import { icons } from '../../icons/index';
 import useCustomForm from '../../Hooks/useCustomForm';
 import { formValuesSignin, signinSchema } from './Shema';
 import toast from 'react-hot-toast';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { login } from '../../redux/auth/operation';
+import { selectIsLoggedIn } from '../../redux/auth/selectors';
+import { closeModal } from '../../redux/modal/slice';
 
 const Signin = () => {
     const dispatch = useDispatch();
@@ -17,6 +19,7 @@ const Signin = () => {
     console.log('SigninForm');
     const { t } = useTranslation();
     const [openPassword, setOpenPassword] = useState(false);
+    const isLogedIn = useSelector(selectIsLoggedIn);
 
     const emailId = useId();
     const passwordId = useId();
@@ -35,15 +38,14 @@ const Signin = () => {
             console.log(data);
             await dispatch(login(data)).unwrap();
             reset();
-
-            // const today = new Date().toISOString().split('T')[0];
-            // dispatch(setDate(today));
-
             navigate('/');
         } catch (error) {
             console.error(error);
         }
     };
+    useEffect(() => {
+        if (isLogedIn) dispatch(closeModal());
+    }, [isLogedIn, dispatch]);
 
     useEffect(() => {
         if (errors.password) {

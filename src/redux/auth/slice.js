@@ -1,5 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { currentUser, login, registerUser } from './operation.js';
+import { currentUser, login, registerUser, updateUser } from './operation.js';
 import { logOutUser } from '../auth/operation.js';
 
 export const INIT_STATE = {
@@ -23,7 +23,7 @@ export const authSlice = createSlice({
     initialState: INIT_STATE,
     reducers: {
         setToken(state, action) {
-            console.log(action.payload.token)
+            console.log(action.payload.token);
             state.token = action.payload.token;
         },
     },
@@ -51,6 +51,10 @@ export const authSlice = createSlice({
             })
             .addCase(currentUser.rejected, state => {
                 state.isRefreshing = false;
+            })
+            .addCase(updateUser.fulfilled, (state, action) => {
+                console.log(action.payload.user);
+                state.user = action.payload.user;
             });
     },
 });

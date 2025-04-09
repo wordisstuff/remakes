@@ -8,6 +8,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { selectUser } from '../../../redux/auth/selectors';
 // import { updateUser } from '../../../redux/auth/operation';
 import { closeModal } from '../../../redux/modal/slice.js';
+import { updateUser } from '../../../redux/auth/operation.js';
 
 export const UserSettingsModal = () => {
     const { t } = useTranslation();
@@ -73,7 +74,7 @@ export const UserSettingsModal = () => {
 
             try {
                 console.log('FORM', validatedData);
-                // dispatch(updateUser(formData));
+                dispatch(updateUser(formData));
                 toast.success(t('modals.UserSettingsForm.success'), {
                     position: 'top-right',
                 });

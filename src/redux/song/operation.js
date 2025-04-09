@@ -22,7 +22,6 @@ export const getAllSongs = createAsyncThunk(
     async (_, { rejectWithValue }) => {
         try {
             const { data } = await songApi.get('/songs');
-            console.log(data);
             return data;
         } catch (err) {
             return rejectWithValue(err.message);

@@ -3,7 +3,6 @@ import clsx from 'clsx';
 import CSS from './AudioPlayer.module.css';
 
 const AudioPlayer = ({ audio, className }) => {
-    console.log(audio);
     return (
         <audio controls className={clsx(CSS.audio, className && className)}>
             <source src={audio} type="audio/mpeg" />

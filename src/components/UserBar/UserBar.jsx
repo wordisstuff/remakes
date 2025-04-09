@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { useTranslation } from 'react-i18next';
+// import { useTranslation } from 'react-i18next';
 import css from './UserBar.module.css';
 import { RxAvatar } from 'react-icons/rx';
 import { icons } from '../../icons/index.js';
@@ -8,21 +8,20 @@ import { openModal } from '../../redux/modal/slice.js';
 import { selectIsLoggedIn, selectUser } from '../../redux/auth/selectors.js';
 
 const UserBar = () => {
-    const { t } = useTranslation();
+    // const { t } = useTranslation();
     const [isPopoverOpen, setIsPopoverOpen] = useState(false);
     const isLoggedIn = useSelector(selectIsLoggedIn);
 
     const userMainInfo = useSelector(selectUser);
-    console.log('USER INFO', userMainInfo);
 
     const dispatch = useDispatch();
     const togglePopover = () => {
         setIsPopoverOpen(!isPopoverOpen);
     };
 
-    const getFirstName = fullName => {
-        return fullName ? fullName.split(' ')[0] : t('UserBar.user');
-    };
+    // const getFirstName = fullName => {
+    //     return fullName ? fullName.split(' ')[0] : t('UserBar.user');
+    // };
 
     const handleOpenModal = type => {
         dispatch(openModal({ type: type }));
@@ -61,7 +60,11 @@ const UserBar = () => {
                                     <a
                                         className={css.userBarModal}
                                         // href="/signin"
-                                        onClick={()=>dispatch(openModal({type:'signin'}))}
+                                        onClick={() =>
+                                            dispatch(
+                                                openModal({ type: 'signin' }),
+                                            )
+                                        }
                                     >
                                         <svg className={css.loginIcon}>
                                             <use xlinkHref={`${icons}#login`} />

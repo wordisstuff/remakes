@@ -31,7 +31,6 @@ export const logOutUser = createAsyncThunk(
 export const login = createAsyncThunk(
     'auth/signin',
     async (formData, thunkAPI) => {
-        console.log(formData);
         try {
             const { data } = await songApi.post('/auth/signin', formData);
             setAuthHeader(data.data.token);
@@ -60,6 +59,28 @@ export const currentUser = createAsyncThunk(
             return data;
         } catch {
             return rejectWithValue(null);
+        }
+    },
+);
+export const updateUser = createAsyncThunk(
+    'auth/update',
+    async (formData, { rejectWithValue, getState }) => {
+        try {
+            const { auth } = getState();
+            const token = auth.token;
+            console.log(token);
+            if (!token) {
+                return rejectWithValue(null);
+            }
+            setAuthHeader(token);
+            console.log(formData);
+            const { data } = await songApi.patch('/auth/update', formData, {
+                headers: { 'Content-Type': 'multipart/form-data' },
+            });
+            console.log('DATA OPER', data);
+            return data;
+        } catch (e) {
+            return rejectWithValue(e.message);
         }
     },
 );

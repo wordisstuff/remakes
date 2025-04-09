@@ -18,7 +18,6 @@ const Modals = () => {
     const dispatch = useDispatch();
     const { isOpen, modalType } = useSelector(selectModal);
 
-    console.log(modalType, isOpen);
     useEffect(() => {
         if (isOpen) {
             document.body.style.overflow = 'hidden';

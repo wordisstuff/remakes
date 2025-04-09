@@ -19,7 +19,6 @@ const Song = () => {
     }, [dispatch]);
 
     const songs = useSelector(selectSongs);
-    console.log(songs);
 
     return (
         <section className={CSS.section}>
@@ -27,7 +26,6 @@ const Song = () => {
             <ul className={CSS.homebox}>
                 {songs !== null &&
                     songs.map(i => {
-                        console.log(i);
                         const {
                             _id,
                             songName,

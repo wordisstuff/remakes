@@ -3,12 +3,12 @@ import { icons } from '../../icons/index.js';
 import CSS from './Header.module.css';
 import { useSelector } from 'react-redux';
 import { selectCart } from '../../redux/song/selectors.js';
-import { ImUser, ImUserCheck } from 'react-icons/im';
-import { selectIsLoggedIn } from '../../redux/auth/selectors.js';
+// import { ImUser, ImUserCheck } from 'react-icons/im';
+// import { selectIsLoggedIn } from '../../redux/auth/selectors.js';
 import UserBar from '../UserBar/UserBar.jsx';
 
 const Header = () => {
-    const isLoggedIn = useSelector(selectIsLoggedIn);
+    // const isLoggedIn = useSelector(selectIsLoggedIn);
     const cartArr = useSelector(selectCart);
     const activ = useLocation();
     return (
