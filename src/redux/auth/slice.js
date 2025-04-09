@@ -23,6 +23,7 @@ export const authSlice = createSlice({
     initialState: INIT_STATE,
     reducers: {
         setToken(state, action) {
+            console.log(action.payload.token)
             state.token = action.payload.token;
         },
     },

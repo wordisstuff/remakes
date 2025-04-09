@@ -7,6 +7,7 @@ import 'aos/dist/aos.css';
 import { useEffect } from 'react';
 import RestrictedRoute from '../Routes/RestrictedRoute';
 import AuthPage from '../../pages/AuthPage';
+import VerifyEmail from '../VerifyEmail/VerifyEmail';
 import Signin from '../SignForm/Signin';
 import Signup from '../SignForm/Signup';
 import AddSong from '../AddSong/AddSong';
@@ -37,8 +38,9 @@ function App() {
         >
             <Routes>
                 <Route path="/" element={<Layout />}>
-                    <Route path="/addsong" element={<AddSong />} />
+                    <Route path="/verify/:token" element={<VerifyEmail />} />
                     <Route path="/license" element={<License />} />
+                    <Route path="/addsong" element={<AddSong />} />
                     <Route index element={<Home />} />
                     <Route
                         path="/signin"
