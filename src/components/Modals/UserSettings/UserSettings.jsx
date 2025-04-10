@@ -7,6 +7,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { selectUser } from '../../../redux/auth/selectors';
 import { closeModal } from '../../../redux/modal/slice.js';
 import { updateUser } from '../../../redux/auth/operation.js';
+import { validateUsersettings } from '../../../validation/user.js';
 
 export const UserSettingsModal = () => {
     const { t } = useTranslation();
@@ -20,7 +21,6 @@ export const UserSettingsModal = () => {
     const dispatch = useDispatch();
     console.log(user);
     console.log(userAvatar);
-   
 
     const hiddenInputUpload = useRef(null);
 
@@ -49,9 +49,12 @@ export const UserSettingsModal = () => {
         };
         console.log(dataForValidation);
         try {
-            const validatedData = await validateUsersettings(t).validate(dataForValidation, {
-                abortEarly: false,
-            });
+            const validatedData = await validateUsersettings(t).validate(
+                dataForValidation,
+                {
+                    abortEarly: false,
+                },
+            );
 
             const formData = new FormData();
             formData.append('name', validatedData.name);

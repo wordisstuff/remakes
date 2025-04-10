@@ -1,6 +1,6 @@
 import * as Yup from 'yup';
 
- export const validateUsersettings = (t) => {
+export const validateUsersettings = t => {
     return Yup.object().shape({
         gender: Yup.string(),
         name: Yup.string()
@@ -12,5 +12,4 @@ import * as Yup from 'yup';
         ),
         photo: Yup.mixed(),
     });
- };
- 
+};
