@@ -29,7 +29,8 @@ function App() {
     return (
         <div
             style={{
-                backgroundImage: "url('/bg2.webp')",
+                // backgroundImage: "url('/bg2.webp')",
+                backgroundColor: '#efffef',
                 backgroundSize: 'cover',
                 backgroundPosition: 'center',
                 width: '100vw',

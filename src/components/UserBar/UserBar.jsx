@@ -6,16 +6,15 @@ import { RxAvatar } from 'react-icons/rx';
 import { icons } from '../../icons/index.js';
 import { openModal } from '../../redux/modal/slice.js';
 import { selectIsLoggedIn, selectUser } from '../../redux/auth/selectors.js';
+import { roleValidator } from '../../validation/user.js';
 
 const UserBar = () => {
     // const { t } = useTranslation();
-    const role = 1
     const [isPopoverOpen, setIsPopoverOpen] = useState(false);
     const isLoggedIn = useSelector(selectIsLoggedIn);
-    // const isLoggedIn = 1
 
     const userMainInfo = useSelector(selectUser);
-
+    const role = roleValidator(userMainInfo);
     const dispatch = useDispatch();
     const togglePopover = () => {
         setIsPopoverOpen(!isPopoverOpen);
@@ -110,7 +109,7 @@ const UserBar = () => {
                                     </a>
                                 </li>
                             )}
-                            {isLoggedIn && role &&   (
+                            {isLoggedIn && role && (
                                 <li>
                                     <a
                                         className={css.userBarModal}
@@ -119,9 +118,7 @@ const UserBar = () => {
                                         }
                                     >
                                         <svg className={css.addSongIcon}>
-                                            <use
-                                                xlinkHref={`${icons}#plus`}
-                                            />
+                                            <use xlinkHref={`${icons}#plus`} />
                                         </svg>
                                         {/* {t('UserBar.logOut')} */}
                                     </a>

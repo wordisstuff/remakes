@@ -13,3 +13,8 @@ export const validateUsersettings = t => {
         photo: Yup.mixed(),
     });
 };
+
+export const roleValidator = user => {
+    if (user.role === 'admin') return true;
+    return false;
+};
