@@ -4,6 +4,7 @@ import { logOutUser } from '../auth/operation.js';
 
 export const INIT_STATE = {
     user: {
+        role:"customer",
         name: null,
         email: null,
         gender: null,

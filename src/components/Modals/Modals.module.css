@@ -37,7 +37,7 @@
 
     opacity: 0;
     background-color: var(--white);
-    border-radius: 15px;
+    border-radius: 30px;
 
     z-index: 15;
     transition:

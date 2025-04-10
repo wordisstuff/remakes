@@ -11,6 +11,7 @@ import { SongModal } from './Song/SongModal.jsx';
 import CSS from './Modals.module.css';
 import Signup from '../SignForm/Signup.jsx';
 import Signin from '../SignForm/Signin.jsx';
+import AddSong from '../AddSong/AddSong.jsx';
 
 Modal.setAppElement('#root');
 
@@ -44,6 +45,8 @@ const Modals = () => {
                 return <Signup />;
             case 'signin':
                 return <Signin />;
+            case 'addSong':
+                return <AddSong />;
             default:
                 return null;
         }

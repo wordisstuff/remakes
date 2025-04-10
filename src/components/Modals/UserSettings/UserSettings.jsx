@@ -3,10 +3,8 @@ import toast from 'react-hot-toast';
 import { useMemo, useRef, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { icons } from '../../../icons/index.js';
-import * as Yup from 'yup';
 import { useDispatch, useSelector } from 'react-redux';
 import { selectUser } from '../../../redux/auth/selectors';
-// import { updateUser } from '../../../redux/auth/operation';
 import { closeModal } from '../../../redux/modal/slice.js';
 import { updateUser } from '../../../redux/auth/operation.js';
 
@@ -22,17 +20,7 @@ export const UserSettingsModal = () => {
     const dispatch = useDispatch();
     console.log(user);
     console.log(userAvatar);
-    const UserSchema = Yup.object().shape({
-        gender: Yup.string(),
-        name: Yup.string()
-            .trim()
-            .min(2, t('modals.UserSettingsForm.validation.nameMin'))
-            .max(12, t('modals.UserSettingsForm.validation.nameMax')),
-        email: Yup.string().email(
-            t('modals.UserSettingsForm.validation.emailInvalid'),
-        ),
-        photo: Yup.mixed(),
-    });
+   
 
     const hiddenInputUpload = useRef(null);
 
@@ -61,7 +49,7 @@ export const UserSettingsModal = () => {
         };
         console.log(dataForValidation);
         try {
-            const validatedData = await UserSchema.validate(dataForValidation, {
+            const validatedData = await validateUsersettings(t).validate(dataForValidation, {
                 abortEarly: false,
             });
 

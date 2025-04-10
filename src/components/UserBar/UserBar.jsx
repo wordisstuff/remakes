@@ -9,8 +9,10 @@ import { selectIsLoggedIn, selectUser } from '../../redux/auth/selectors.js';
 
 const UserBar = () => {
     // const { t } = useTranslation();
+    const role = 1
     const [isPopoverOpen, setIsPopoverOpen] = useState(false);
     const isLoggedIn = useSelector(selectIsLoggedIn);
+    // const isLoggedIn = 1
 
     const userMainInfo = useSelector(selectUser);
 
@@ -102,6 +104,23 @@ const UserBar = () => {
                                         <svg className={css.logoutIcon}>
                                             <use
                                                 xlinkHref={`${icons}#log-out`}
+                                            />
+                                        </svg>
+                                        {/* {t('UserBar.logOut')} */}
+                                    </a>
+                                </li>
+                            )}
+                            {isLoggedIn && role &&   (
+                                <li>
+                                    <a
+                                        className={css.userBarModal}
+                                        onClick={() =>
+                                            handleOpenModal('addSong')
+                                        }
+                                    >
+                                        <svg className={css.addSongIcon}>
+                                            <use
+                                                xlinkHref={`${icons}#plus`}
                                             />
                                         </svg>
                                         {/* {t('UserBar.logOut')} */}

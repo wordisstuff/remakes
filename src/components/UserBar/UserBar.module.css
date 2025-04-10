@@ -74,6 +74,17 @@
     animation:jumpRight 0.6s ease-in-out infinite;
 }
 
+.addSongIcon{
+    stroke: #a8a7a7;
+        width: 28px;
+        height: 28px;
+        display: inline-block;
+}
+.addSongIcon:hover{
+    animation: spin 2s linear infinite;
+}
+
+
 @keyframes jumpRight {
     0% {
         transform: translateX(0);
