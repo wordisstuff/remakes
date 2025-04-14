@@ -61,25 +61,6 @@ const AddSong = () => {
             setSongProject(fileUploaded);
         }
     };
-    // const handleChange = e => {
-    //     if (e.target.files) {
-    //         const fileUploaded = e.target.files[0];
-    //         const fileExtension = fileUploaded.name
-    //             .split('.')
-    //             .pop()
-    //             .toLowerCase();
-
-    //         if (fileExtension === 'mp3') {
-    //             setSongMp3(fileUploaded);
-    //         } else if (fileExtension === 'rar') {
-    //             setSongProject(fileUploaded);
-    //         } else if (['jpg', 'jpeg', 'png', 'webp'].includes(fileExtension)) {
-    //             setSongPic(fileUploaded);
-    //         } else {
-    //             console.warn('Непідтримуваний формат файлу:', fileExtension);
-    //         }
-    //     }
-    // };
 
     const handleSubmit = async e => {
         e.preventDefault();
@@ -203,7 +184,7 @@ const AddSong = () => {
                         <input
                             type="file"
                             style={{ display: 'none' }}
-                            accept=".mp3"
+                            accept=".mp3,.flac"
                             onChange={handleChangeMp3}
                             ref={hiddenInputMp3}
                         />

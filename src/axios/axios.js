@@ -15,4 +15,10 @@ export const clearAuthHeader = () => {
 export const songApi = axios.create({
     baseURL: urla(),
     withCredentials: true,
+    onUploadProgress: progressEvent => {
+        const completed = Math.round(
+            (progressEvent.loaded * 100) / progressEvent.total,
+        );
+        console.log(`${completed}%`);
+    },
 });

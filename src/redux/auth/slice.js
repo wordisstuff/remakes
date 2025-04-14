@@ -1,10 +1,16 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { currentUser, login, registerUser, updateUser } from './operation.js';
+import {
+    byProject,
+    currentUser,
+    login,
+    registerUser,
+    updateUser,
+} from './operation.js';
 import { logOutUser } from '../auth/operation.js';
 
 export const INIT_STATE = {
     user: {
-        role:"customer",
+        role: 'customer',
         name: null,
         email: null,
         gender: null,
@@ -56,6 +62,10 @@ export const authSlice = createSlice({
             .addCase(updateUser.fulfilled, (state, action) => {
                 console.log(action.payload.user);
                 state.user = action.payload.user;
+            })
+            .addCase(byProject.fulfilled, (state, action) => {
+                console.log(action.payload);
+                // state.user = action.payload.user;
             });
     },
 });

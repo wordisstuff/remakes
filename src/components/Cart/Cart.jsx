@@ -4,10 +4,14 @@ import { selectCart } from '../../redux/song/selectors.js';
 import { resetCart } from '../../redux/song/slice.js';
 import CSS from './Cart.module.css';
 import AudioPlayer from '../AudioPlayer/AudioPlayer.jsx';
+import { byProject } from '../../redux/auth/operation.js';
 
 const Cart = () => {
     const dispatch = useDispatch();
     const cart = useSelector(selectCart);
+    console.log(cart);
+    const projectsIds = cart.map(i => i._id);
+    console.log(projectsIds);
 
     const totalPrice = cart.reduce((ac, s) => ac + s.price, 0);
     console.log(totalPrice);
@@ -51,9 +55,17 @@ const Cart = () => {
                     )}
             </ul>
             <p>Total:{totalPrice} $ </p>
-            <button type="button" onClick={() => dispatch(resetCart())}>
-                reset cart
-            </button>
+            <div style={{ display: 'flex', flexDirection: 'column' }}>
+                <button type="button" onClick={() => dispatch(resetCart())}>
+                    reset cart
+                </button>
+                <button
+                    type="button"
+                    onClick={() => dispatch(byProject(projectsIds))}
+                >
+                    Pay
+                </button>
+            </div>
         </Container>
     );
 };

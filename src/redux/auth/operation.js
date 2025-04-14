@@ -84,3 +84,23 @@ export const updateUser = createAsyncThunk(
         }
     },
 );
+export const byProject = createAsyncThunk(
+    'auth/byProject',
+    async (project, { rejectWithValue, getState }) => {
+        try {
+            const { auth } = getState();
+            const token = auth.token;
+            console.log(token);
+            if (!token) {
+                return rejectWithValue(null);
+            }
+            setAuthHeader(token);
+            console.log(project);
+            const { data } = await songApi.post('/auth/byProject', project);
+            console.log('DATA OPER', data);
+            return data;
+        } catch (e) {
+            return rejectWithValue(e.message);
+        }
+    },
+);
