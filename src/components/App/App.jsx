@@ -16,6 +16,8 @@ import { currentUser } from '../../redux/auth/operation';
 import { selectIsRefreshing } from '../../redux/auth/selectors';
 import License from '../Modals/License/License';
 import Modals from '../Modals/Modals';
+import PayPage from '../../pages/PayPage';
+
 function App() {
     const dispatch = useDispatch();
     const isRefreshing = useSelector(selectIsRefreshing);
@@ -70,6 +72,7 @@ function App() {
                         }
                     />
                     <Route path="/cart" element={<Cart />} />
+                    <Route path="/pay" element={<PayPage />} />
                 </Route>
             </Routes>
             <Modals />
