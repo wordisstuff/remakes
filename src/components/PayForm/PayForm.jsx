@@ -21,9 +21,24 @@ export const PayForm = () => {
         }
     };
 
+    const cardElementOptions = {
+        style: {
+            base: {
+                fontSize: '16px',
+                color: '#32325d',
+                '::placeholder': {
+                    color: '#aab7c4',
+                },
+            },
+            invalid: {
+                color: '#fa755a',
+            },
+        },
+    };
+
     return (
         <form onSubmit={handleSubmit}>
-            <CardElement />
+            <CardElement options={cardElementOptions} />
             <button type="submit" disabled={!stripe}>
                 Pay
             </button>

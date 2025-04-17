@@ -5,10 +5,13 @@ import { resetCart } from '../../redux/song/slice.js';
 import CSS from './Cart.module.css';
 import AudioPlayer from '../AudioPlayer/AudioPlayer.jsx';
 import { byProject } from '../../redux/auth/operation.js';
+import { useState } from 'react';
+import PayPage from '../../pages/PayPage.jsx';
 
 const Cart = () => {
     const dispatch = useDispatch();
     const cart = useSelector(selectCart);
+    const [buy, SetBuy] = useState();
     console.log(cart);
     const projectsIds = cart.map(i => i._id);
     console.log(projectsIds);
@@ -59,12 +62,15 @@ const Cart = () => {
                 <button type="button" onClick={() => dispatch(resetCart())}>
                     reset cart
                 </button>
+                {/* <a href="/pay">Buy</a> */}
                 <button
                     type="button"
-                    onClick={() => dispatch(byProject(projectsIds))}
+                    onClick={() => SetBuy(!buy)}
+                    // onClick={() => dispatch(byProject(projectsIds))}
                 >
                     Pay
                 </button>
+                {buy && <PayPage price={totalPrice} />}
             </div>
         </Container>
     );
